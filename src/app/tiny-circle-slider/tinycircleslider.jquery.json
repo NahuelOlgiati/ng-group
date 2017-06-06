@@ -1,0 +1,36 @@
+{
+  "name": "tinycircleslider",
+  "title": "Tiny Circleslider",
+  "version": "2.0.8",
+  "description": "A lightweight cross browser circular carousel.",
+  "homepage": "http://www.baijs.com/tinycircleslider",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wieringen/tinycircleslider.git"
+  },
+  "keywords": [
+    "UI",
+    "jQuery",
+    "Mobile",
+    "Carousel",
+    "Slider",
+    "javascript"
+  ],
+  "author": {
+    "name": "Maarten Baijs",
+    "email": "wieringen@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/wieringen/tinycircleslider/blob/master/MIT-LICENSE.txt"
+    }
+  ],
+  "bugs": "https://github.com/wieringen/tinycircleslider/issues",
+  "download": "http://baijs.com/tinycircleslider/",
+  "demo" : "http://baijs.com/tinycircleslider/",
+  "docs" : "http://baijs.com/tinycircleslider/",
+  "dependencies": {
+    "jquery": ">=1.5"
+  }
+}
