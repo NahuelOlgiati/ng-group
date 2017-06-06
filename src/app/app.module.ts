@@ -6,14 +6,12 @@ import { HttpModule } from '@angular/http';
 import { AppRouterModule } from './app-router.module';
 
 import { AppComponent } from './app.component';
-import { CircleViewComponent } from './circle-view/circle-view.component';
-import { TinyCircleSliderComponent } from './tiny-circle-slider/tiny-circle-slider.component';
+import { NgGroupComponent } from './ng-group/ng-group.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CircleViewComponent,
-    TinyCircleSliderComponent
+    NgGroupComponent
   ],
   imports: [
     BrowserModule,
