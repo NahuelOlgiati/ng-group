@@ -19,10 +19,17 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "ng",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "../node_modules/jqueryui/jquery-ui.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./assets/css/custom.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js"
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/jqueryui/jquery-ui.js",
+        "./assets/js/jquery.path.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "./assets/js/circle.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
