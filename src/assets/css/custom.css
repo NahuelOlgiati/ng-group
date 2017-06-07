@@ -1,10 +1,10 @@
 body {
-  
+
   font-size: 14px;
   line-height: 1.4;
   color: #333;
   background-color: #fafafa;
-  
+
 }
 
 
@@ -131,12 +131,10 @@ a.black{color: #000 !important;}
 }
 
 .circles-ctn{
-	position:fixed;
 	height:100%;
 	top:52px ;
 	right:0;
 	overflow:auto;
-	background-color:#EBEBEB;
 }
 .circles-ctn.affix .circle-right-ctn{
 	width:100%;
@@ -194,7 +192,7 @@ a.black{color: #000 !important;}
 	text-decoration:underline;
 }
 .circle-list-item .close-btn {
-	display:none;	
+	display:none;
 }
 .circle-list-ul > li > .circle-bdr:hover > .circle-list-item .close-btn  {
 	position: absolute;
@@ -227,21 +225,21 @@ margin: 16px 0 0 15px;
 	padding:0;
 	overflow-y:auto;
 }
-.circle-ui { 
+.circle-ui {
 	width: 100px;
-	height: 100px; 
-	border-radius: 50%; 
-	-webkit-border-radius: 50%; 
-	-moz-border-radius: 50%; 
-	 background: #f9532f; 
-	transition: all 200ms ease-in-out; 
-	-webkit-transition: all 200ms ease-in-out; 
-	-moz-transition: all 200ms ease-in-out; 
-	-o-transition: all 200ms ease-in-out; 
-	margin-right: 50px; 
-	text-align: center; 
-	color: #fff; 
-	float: left; 
+	height: 100px;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	 background: #f9532f;
+	transition: all 200ms ease-in-out;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	margin-right: 50px;
+	text-align: center;
+	color: #fff;
+	float: left;
 	padding:10px;
 	cursor:pointer;
 }
@@ -256,29 +254,29 @@ margin: 16px 0 0 15px;
 }
 .circle-ui.drop-hover{
 	background:#FE8A71;
-	transform:scale(1.2); 
-	-webkit-transform:scale(1.2); 
+	transform:scale(1.2);
+	-webkit-transform:scale(1.2);
 }
-.circle-ui .inner { 
-	display: table-cell; 
-	vertical-align: middle; 
-	position:relative 
+.circle-ui .inner {
+	display: table-cell;
+	vertical-align: middle;
+	position:relative
 }
 .circle-ui.add-circles {
 	background: #777;
 	color: #fff;
 	position: relative;
 }
-.circle-ui:hover { 
-	transform:scale(1.2); 
-	-webkit-transform:scale(1.2); 
+.circle-ui:hover {
+	transform:scale(1.2);
+	-webkit-transform:scale(1.2);
 }
 .circle-ui .circle-drop-item > li{
 	padding:0 !important;
 	position:absolute;
 }
 .circle-ui .circle-drop-item > li .item-dec , .content > .circle-card .item-dec{
-	display:none;	
+	display:none;
 }
 .circle-ui .circle-drop-item > li .list-row > span, .content > .circle-card .list-row > span{
 	padding:0;
@@ -293,7 +291,7 @@ margin: 16px 0 0 15px;
 }
 .content >.circle-card .list-row > span{
 	float:left;
-	
+
 }
 .circle-ui .circle-drop-item > li .list-row > span img, .content > li .list-row > span img{
 	border-radius:50%;
@@ -321,7 +319,7 @@ margin: 16px 0 0 15px;
 	background:green;
 }
 .circle-list-ul > .circle-card{
-	position:static;	
+	position:static;
 }
 .circle-list-ul > .circle-card.ui-state-highlight{
 	border:0;
@@ -331,7 +329,7 @@ margin: 16px 0 0 15px;
 .dragging-info{
 	background-color:#666;
 	padding:15px;
-	
+
 }
 .dragging-info p{
 	color:#fff;
@@ -454,7 +452,7 @@ border-top-right-radius: 3px;
     position: relative;
     text-align: center;
     text-decoration: none;
-    white-space: nowrap;  
+    white-space: nowrap;
 }
 .add-circle-user{
 	border: 1px solid rgba(0, 0, 0, 0.2);
@@ -485,7 +483,7 @@ border-top-right-radius: 3px;
 	height:25px;
 	float:left;
 	background:url(../images/dropIcon.png) 0 0 no-repeat;
-	
+
 }
 .draggable-tooltip.delete{
 		background:url(../images/dropIcon.png) 0 -35px no-repeat;
