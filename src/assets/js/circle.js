@@ -1,20 +1,18 @@
 var windowWidth = $(window).width(),
   windowHeight = $(window).height(),
-
   circleLeft = $('.circle-left-ctn').outerWidth(),
   circleright = $('.circle-right-ctn').outerWidth(),
-  circleWidth = windowWidth - circleLeft - 22 + "px";
-circleHeight = windowHeight - 52 + "px";
-var selectedClass = 'ui-state-highlight',
-  clickDelay = 600,
-  // click time (milliseconds)
+  circleWidth = windowWidth - circleLeft - 22 + "px",
+  circleHeight = windowHeight - 52 + "px",
+  selectedClass = 'ui-state-highlight',
+  clickDelay = 600, // milliseconds
   lastClick, diffClick; // timestamps
+
 var clickFunction = function () {
   $(".circle-list-ul > .circle-card")
     .on('mousedown mouseup', function (e) {
       if (e.type == "mousedown") {
         lastClick = e.timeStamp; // get mousedown time
-
       } else {
         diffClick = e.timeStamp - lastClick;
         if (diffClick < clickDelay) {
@@ -23,38 +21,10 @@ var clickFunction = function () {
       }
     })
 };
-clickFunction()
-$(function () {
-  var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
-  $("#tags").autocomplete({
-    source: availableTags
-  });
-});
+clickFunction();
 
-$(document).ready(function (e) {
+jQuery(document).ready(function ($) {
+
   $(".close-btn").click(function () {
     $(this).parents("li").fadeOut();
   });
@@ -62,20 +32,8 @@ $(document).ready(function (e) {
     "width": circleWidth,
     "height": circleHeight
   });
-});
 
-
-
-jQuery(document).ready(function ($) {
-
-	//var windowWidth = $(window).width();
-
-/*$(".circle-drop-item .circle-card").mouseenter(function(){
-	alert("dddd")
-	 var $this = $(this);
-                    move($this,2000,1);
-
-})*/var outside = 0;
+  var outside = 0;
   var outsideCircle = 0;
   $(".circle-list-ul > .circle-card").draggable({
     cursor: "move",
@@ -101,34 +59,27 @@ jQuery(document).ready(function ($) {
         left: ui.position.left
       });
     }
-
   });
+
   $(".circle-list-ul").droppable({
     greedy: true,
     hoverClass: "data-hover",
     accept: ".circle-drop-item > .circle-card",
-
     over: function (event, ui) {
-
       var folderName = $(event.target).attr('id');
       var targetFolder = $(event.target).attr('id');
       var parentClass = $(ui.helper).parents('li')
       $(ui.helper).find('.draggable-tooltip').remove();
       $(ui.helper).find('.circle-bdr').append($('<span class="draggable-tooltip"></span>'));
-
     },
     out: function (event, ui) {
       $(ui.helper).find('.draggable-tooltip').remove();
       $(ui.helper).find('.circle-bdr').append($('<span class="draggable-tooltip delete"></span>'));
-
-
     },
     drop: function (event, ui) {
-
       var cloneItem = $(ui.draggable).clone().on('mousedown mouseup', function (e) {
         if (e.type == "mousedown") {
           lastClick = e.timeStamp; // get mousedown time
-
         } else {
           diffClick = e.timeStamp - lastClick;
           if (diffClick < clickDelay) {
@@ -140,11 +91,9 @@ jQuery(document).ready(function ($) {
       });
       recycleImage(cloneItem, this);
       outside = 1
-
-
-
     }
   });
+
   $(".circle-drop").droppable({
     greedy: true,
     tolerance: "pointer",
@@ -153,26 +102,20 @@ jQuery(document).ready(function ($) {
       outsideCircle = 1;
       $(ui.helper).find('.draggable-tooltip').remove();
     },
-
     drop: function (event, ui) {
       var cloneItem
-
-
       if ($('.' + selectedClass).length == 1) {
-
         cloneItem = $('.' + selectedClass).removeClass('left-drop-card ui-draggable-dragging draggable' + selectedClass).addClass('dingdon').css({
           position: '',
           top: 0,
           left: 0
-        }).clone()
-
+        }).clone();
       } else {
         cloneItem = $('.' + selectedClass + ':not(.ui-draggable-dragging)').removeClass('left-drop-card draggable' + selectedClass).addClass('dingdon').css({
           position: '',
           top: 0,
           left: 0
-        }).clone()
-
+        }).clone();
       }
       deleteImage(cloneItem, this);
       var dropItmeList = $(this).find('.circle-drop-item li').length
@@ -180,20 +123,17 @@ jQuery(document).ready(function ($) {
       if (cloneItem.hasClass(selectedClass)) {
         $(this).find(".dorp-action.add-new").text(cloneItem.length)
         $(this).find(".dorp-action.add-new").animate({ "margin-top": "-25px", "opacity": "1" }, 450, function () {
-
           $(this).animate({ "margin-top": "0px", "opacity": "0" }, 450);
-
         });
       }
     },
     out: function (event, ui) {
-
       outsideCircle = 0;
       if (!$(ui.helper).hasClass('left-drop-card')) {
         $(ui.helper).find('.draggable-tooltip').remove();
         $(ui.helper).find('.circle-bdr').append($('<span class="draggable-tooltip delete"></span>'));
       }
-    },
+    }
   });
 
   function recycleImage($item, data) {
@@ -233,15 +173,13 @@ jQuery(document).ready(function ($) {
           left: ui.position.left
         });
       }
-
-    })
-  }
-
-
+    });
+  };
 
   function deleteImage($item, data) {
     var $trash = $(data);
     var itemArray = []
+
     $item.each(function () {
       var subitem = $(this)
       subitem.fadeOut(function () {
@@ -278,7 +216,6 @@ jQuery(document).ready(function ($) {
         drag: function (e, ui) {
           outside = 0
         },
-
         stop: function (event, ui) {
           var folderName = (ui.helper).data('id');
           var parentClass = $(ui.helper).parents('li.circle-popover').attr('id');
@@ -287,31 +224,26 @@ jQuery(document).ready(function ($) {
             $(this).parents('li.circle-popover').find(".dorp-action.delete").animate({ "margin-top": "-25px", "opacity": "1" }, 450, function () {
               $(this).animate({ "margin-top": "0px", "opacity": "0" }, 450);
             });
-            var dropItmeList = $(this).parents('li.circle-popover').find('.circle-drop-item li').length
-
+            var dropItmeList = $(this).parents('li.circle-popover').find('.circle-drop-item li').length;
             $(this).parents('li.circle-popover').find('.members').text(dropItmeList - 1)
-
             $(this).remove();
-
-
           }
         },
         cursorAt: { left: 25 }
       });
-      var liLength = $trash.find("ul li").length
+      var liLength = $trash.find("ul li").length;
 
       if (liLength > 10) {
-
         subitem.css({
           display: 'none'
         })
       }
       move(liLength, subitem, 1500, 1);
-
       subitem.attr('data-id', subitem.parents('li.circle-popover').attr('id'))
-    })
+    });
 
-  }
+  };
+
   function move(count, $elem, speed, turns) {
     var $circle = $elem;
 
@@ -330,8 +262,7 @@ jQuery(document).ready(function ($) {
 
         opacity: '1'
       }, speed);
-
-  }
+  };
 
 });
 
@@ -347,12 +278,8 @@ $('.circle-popover').popover({
 
 
 
-
-
-
-
-
-
+// Popups
+/*
 $(function () {
 
   var hideDelay = 10;
@@ -432,7 +359,6 @@ $(function () {
 
   $('body').append(addContainer);
 
-
   var circleform = $('<input type="text"/>');
   var circlelink = $('<a href="#" id="new-circle-form"> Create new circles</a>');
 
@@ -508,16 +434,5 @@ $(function () {
     }, hideDelay);
   });
 
-
-
-
 });
-
-
-
-
-
-
-
-
-
+*/
