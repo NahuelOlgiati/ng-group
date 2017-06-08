@@ -62,15 +62,10 @@ export class NgGroupComponent implements AfterViewInit {
       $item.each(function () {
         const subitem = $(this);
         subitem.fadeOut(function () {
-          console.log('ALBERTO');
-          console.log($trash);
-          console.log($('ul', $trash));
           const $list = $('ul', $trash).length ?
             $('ul', $trash) :
             $("<ul class='circle-drop-item ui-helper-reset clearfix'/>")
               .appendTo($trash);
-
-          console.log('list: ');
           console.log($list);
           subitem.appendTo($list).fadeIn(function () {
             subitem.animate({
