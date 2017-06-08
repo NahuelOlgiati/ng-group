@@ -22,7 +22,7 @@
         "styles.css",
         "../node_modules/jqueryui/jquery-ui.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "./assets/css/custom.css"
+        "./assets/css/custom.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
@@ -59,7 +59,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }

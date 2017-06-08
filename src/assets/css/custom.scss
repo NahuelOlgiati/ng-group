@@ -1,0 +1,627 @@
+/*
+a {
+	color: #4d94ff;
+	text-decoration: none;
+	&.black {
+		color: #000 !important;
+	}
+}
+*/
+ul {
+	list-style: none;
+}
+li {
+	list-style: none;
+}
+/*
+.bdr-t {
+	border-top: 1px solid #ccc;
+}
+.bdr-b {
+	border-bottom: 1px solid #ccc;
+}
+.bdr-l {
+	border-left: 1px solid #ccc;
+}
+.bdr-r {
+	border-right: 1px solid #ccc;
+}
+.m-0 {
+	margin: 0 !important;
+}
+.m-14 {
+	margin: 14px;
+}
+.m-r0 {
+	margin-right: 0 !important;
+}
+.m-10 {
+	margin: 10px;
+}
+.m-t20 {
+	margin-top: 20px;
+}
+.m-t5 {
+	margin-top: 5px;
+}
+.m-t10 {
+	margin-top: 10px;
+}
+.m-b10 {
+	margin-bottom: 10px;
+}
+.m-b30 {
+	margin-bottom: 30px;
+}
+.m-tb10 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.m-tb20 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.m-r10 {
+	margin-right: 10px;
+}
+.m-r5 {
+	margin-right: 5px;
+}
+.m-r15 {
+	margin-right: 15px;
+}
+.m-l0 {
+	margin-left: 0!important;
+}
+.m-l10 {
+	margin-left: 10px;
+}
+.m-l15 {
+	margin-left: 15px;
+}
+.m-lr10 {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.m-lr15 {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+.m-b0 {
+	margin-bottom: 0;
+}
+.m-b15 {
+	margin-bottom: 15px;
+}
+.m-b20 {
+	margin-bottom: 20px;
+}
+.m-t0 {
+	margin-top: 0;
+}
+.m-t30 {
+	margin-top: 30px;
+}
+.m-t55 {
+	margin-top: 55px;
+}
+.mp-0 {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.m--t5 {
+	margin-top: -5px;
+}
+.m--t4 {
+	margin-top: -4px;
+}
+.m--l20 {
+	margin-left: -20px;
+}
+.p-0 {
+	padding: 0 !important;
+}
+.p-l0 {
+	padding-left: 0 !important;
+}
+.p-11 {
+	padding: 11px;
+}
+.p-14 {
+	padding: 14px;
+}
+.p-t5 {
+	padding-top: 5px !important;
+}
+.p-t10 {
+	padding-top: 10px;
+}
+.p-b10 {
+	padding-bottom: 10px;
+}
+.p-tb10 {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.p-tb15 {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.p-r14 {
+	padding-right: 14px;
+}
+.p-l5 {
+	padding-left: 5px !important;
+}
+.p-l10 {
+	padding-left: 10px !important;
+}
+.p-l30 {
+	padding-left: 30px !important;
+}
+.p-rl10 {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+.p-rl15 {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.p-rl0 {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+.mw-80 {
+	min-width: 80px;
+}
+.text-white {
+	color: #fff;
+}
+.border0 {
+	border: none !important;
+}
+.Bg-LightBlue {
+	background: #ebf1f8;
+}
+.top--10 {
+	top: -10px;
+}
+.top--4 {
+	top: -4px;
+}
+.top--3 {
+	top: -3px;
+}
+.top-7 {
+	top: 7px;
+}
+.top-4 {
+	top: 4px;
+}
+.top-3 {
+	top: 3px;
+}
+.top-2 {
+	top: 2px;
+}
+.top-1 {
+	top: 1px;
+}
+.top--1 {
+	top: -1px;
+}
+.left--14 {
+	left: -14px;
+}
+*/
+.pos-abs {
+	position: absolute;
+}
+.pos-rtv {
+	position: relative;
+}
+.dis-cell {
+	display: table-cell;
+}
+.d-in-blk {
+	display: inline-block;
+}
+.d-blk {
+	display: block !important;
+}
+.over-hidden {
+	overflow: hidden;
+}
+.v-align-c {
+	vertical-align: central;
+}
+.ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.heading-medium {
+	font-size: 20px !important;
+	font-weight: normal !important;
+}
+.circles-ctn {
+	height: 100%;
+	top: 52px;
+	right: 0;
+	overflow: auto;
+	&.affix .circle-right-ctn {
+		width: 100%;
+		padding: 0;
+	}
+}
+.circle-right-ctn {
+	height: 100%;
+	padding: 0;
+	overflow-y: auto;
+}
+.circle-list-ul {
+	margin: 0;
+	padding: 30px 0;
+	> li {
+		.circle-bdr {
+			border: 5px solid transparent;
+			margin-bottom: 10px;
+		}
+		&.circle-card .circle-bdr:hover {
+			border: 5px solid rgba(77,148,255,0.8);
+		}
+		> .circle-bdr {
+			> .circle-list-item {
+				background: #fff;
+				position: relative;
+				min-height: 80px;
+				display: table;
+				width: 100%;
+				//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+				box-shadow: 3px 3px 6px 0 rgba(102, 102, 102, 0.75);
+				&.add-user {
+					cursor: pointer;
+				}
+				&.drag-cursor {
+					cursor: url(../../assets/images/cursor_hand.png), auto;
+				}
+			}
+			&:hover > .circle-list-item .close-btn {
+				position: absolute;
+				top: 0;
+				right: 0;
+				display: block;
+				margin: 5px 5px 0 0;
+				i {
+					margin: 16px 0 0 15px;
+				}
+			}
+		}
+		&.ui-state-highlight > .circle-bdr > .circle-list-item {
+			background: rgba(77,148,255,0.4);
+		}
+	}
+	> .circle-card {
+		position: static;
+		&.ui-state-highlight {
+			border: 0;
+			background: none;
+			height: auto;
+		}
+	}
+}
+.circle-drop-ul {
+	margin: 0;
+	padding: 30px 0;
+}
+.circle-list-item {
+	.list-row {
+		display: table-row;
+	}
+	&.add-user {
+		> .add-user-icon {
+			vertical-align: middle;
+			height: 80px;
+			margin-right: 15px;
+			padding: 26px 15px 0;
+			border-right: 1px solid #ccc;
+			display: inline-block;
+		}
+		&:hover h5 {
+			text-decoration: underline;
+		}
+	}
+	h5 {
+		font-weight: 700;
+	}
+	.close-btn {
+		display: none;
+	}
+	> .list-row {
+		> span {
+			width: 90px;
+			padding-right: 10px;
+			height: 80px;
+		}
+		> {
+			.item-cell {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.item-dec .level-icon {
+				margin-top: 5px;
+				float: left;
+				color: #f9532f;
+			}
+		}
+	}
+}
+.circle-left-ctn {
+	z-index: 8;
+}
+.circle-ui {
+	width: 100px;
+	height: 100px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 50%;
+	background: #f9532f;
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: all 200ms ease-in-out;
+	margin-right: 50px;
+	text-align: center;
+	color: #fff;
+	float: left;
+	padding: 10px;
+	cursor: pointer;
+	&:hover {
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: scale(1.2);
+		h5 {
+			text-decoration: underline;
+		}
+		.circle-drop-item {
+			display: block;
+		}
+	}
+	> {
+		.circle-drop-inner {
+			display: table;
+			overflow: visible;
+			width: 100%;
+			height: 100%;
+		}
+		.circle-drop-item {
+			display: none;
+		}
+	}
+	&.drop-hover {
+		background: #fe8a71;
+		//Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+		transform: scale(1.2);
+	}
+	.inner {
+		display: table-cell;
+		vertical-align: middle;
+		position: relative;
+	}
+	&.add-circles {
+		background: #777;
+		color: #fff;
+		position: relative;
+	}
+	.circle-drop-item > li {
+		padding: 0 !important;
+		position: absolute;
+		.item-dec {
+			display: none;
+		}
+		.circle-bdr {
+			position: relative;
+		}
+		.list-row > span {
+			padding: 0;
+      width: 22px;
+      height: 22px;
+			img {
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+				border-radius: 50%;
+			}
+		}
+	}
+}
+.content {
+	.circle-card {
+		display: block;
+	}
+	> .circle-card {
+		z-index: 999999;
+		.item-dec {
+			display: none;
+		}
+		.circle-bdr {
+			position: relative;
+		}
+		.list-row > span {
+      padding: 0;
+      width: 22px;
+      height: 22px;
+			float: left;
+		}
+	}
+	> li .list-row > span img {
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 50%;
+	}
+}
+.dorp-action {
+	width: 20px;
+	height: 20px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 25px;
+	color: #fff;
+	opacity: 0;
+	&.delete {
+		background: red;
+	}
+	&.add-new {
+		background: green;
+	}
+}
+.dragging-info {
+	background-color: #666;
+	padding: 15px;
+	p {
+		color: #fff;
+		font-size: 16px;
+	}
+}
+.drop-arrow-img {
+	position: absolute;
+	top: 40px;
+	left: 60%;
+	width: 200x;
+	height: 40px;
+	z-index: 9;
+}
+#personPopupContainer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	z-index: 20000;
+	width: 300px;
+	height: 185px;
+	background: #fff;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 3px;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+	//Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+	transition: opacity .13s linear;
+	img {
+		&#cover {
+			width: 100%;
+			height: 90px;
+			//Instead of the line below you could use @include border-top-left-radius($radius)
+			border-top-left-radius: 3px;
+			//Instead of the line below you could use @include border-top-right-radius($radius)
+			border-top-right-radius: 3px;
+		}
+		&#profile {
+			width: 90px;
+			height: 90px;
+			position: absolute;
+			top: 50px;
+			left: 5px;
+			z-index: 1234;
+			background-color: #ffffff;
+			border: 3px solid #ffffff;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+			border-radius: 1px;
+		}
+	}
+}
+#circlePopUP {
+	position: absolute;
+	top: 0;
+	display: none;
+	z-index: 20000;
+	width: 200px;
+	background: #fff;
+	border: 1px solid #999;
+	> ul {
+		padding: 10px 10px 0 10px;
+		background: #ebf1f8;
+		margin: 0;
+		> li {
+			padding-bottom: 10px;
+		}
+	}
+	.popup-new-circel {
+		padding: 7px 10px;
+	}
+}
+#hoverbox_name {
+	font-size: 20px;
+	padding: 0 10px 0 100px;
+	color: #000;
+	> p {
+		margin: 0;
+	}
+	> .center-name {
+		font-size: 13px;
+		color: #737373;
+	}
+}
+#hoverbox_bottom {
+	width: 100%;
+	height: 18%;
+	position: absolute;
+	bottom: 0;
+	background-color: #eee;
+}
+#fbstyle_button {
+	background-color: #eeeeee;
+	background-image: linear-gradient(#f5f6f6, #e4e4e3);
+	border-color: #999999 #999999 #888888;
+	//Instead of the line below you could use @include border-image($value)
+	border-image: none;
+	border-style: solid;
+	border-width: 1px;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), 0 1px 0 #ffffff inset;
+	color: #333333;
+	cursor: pointer;
+	display: inline-block;
+	font: bold 11px lucida grande, tahoma, verdana, arial, sans-serif;
+	margin: 0;
+	overflow: visible;
+	padding: 0.3em 0.6em 0.375em;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+}
+.add-circle-user {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 1px;
+	background: #fff;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 0;
+	.ui-widget-header {
+		background-color: #ebf1f8;
+		border: 0;
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 0;
+		border-bottom: 1px solid #cbdaeb;
+		font-size: 15px;
+		color: #164c87;
+	}
+	label {
+		font-size: 14px;
+	}
+	.ui-dialog-buttonpane {
+		border-top: 1px solid #cbdaeb;
+		padding-right: .5em;
+	}
+}
+.draggable-tooltip {
+	position: absolute;
+	bottom: -18px;
+	left: -15px;
+	width: 25px;
+	height: 25px;
+	float: left;
+	background: url(../../assets/images/dropIcon.png) 0 0 no-repeat;
+	&.delete {
+		background: url(../../assets/images/dropIcon.png) 0 -35px no-repeat;
+	}
+}
+#dragInfo-affix.affix {
+	top: 135px;
+	left: 0;
+	z-index: 9;
+}
