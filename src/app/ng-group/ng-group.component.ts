@@ -14,13 +14,7 @@ export class NgGroupComponent implements AfterViewInit {
   ngAfterViewInit() {
 
     // Vars
-    const windowWidth = $(window).width(),
-      windowHeight = $(window).height(),
-      circleLeft = $('.circle-left-ctn').outerWidth(),
-      circleright = $('.circle-right-ctn').outerWidth(),
-      circleWidth = windowWidth - circleLeft - 22 + 'px',
-      circleHeight = windowHeight - 52 + 'px',
-      selectedClass = 'ui-state-highlight',
+    const selectedClass = 'ui-state-highlight',
       clickDelay = 600, // milliseconds
       ngContentID = this.el.nativeElement.firstChild.attributes[0].name;
     let outside = 0;
@@ -169,11 +163,6 @@ export class NgGroupComponent implements AfterViewInit {
 
     $('.close-btn').click(function () {
       $(this).parents('li').fadeOut();
-    });
-
-    $('#affixCircles').css({
-      'width': circleWidth,
-      'height': circleHeight
     });
 
     $('.circle-list-ul > .circle-card').draggable({
