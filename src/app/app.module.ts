@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NgGroupComponent } from './ng-group/ng-group.component';
+import { TinyCircleComponent } from './tiny-circle/tiny-circle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NgGroupComponent
+    NgGroupComponent,
+    TinyCircleComponent
   ],
   imports: [
     BrowserModule,
