@@ -165,6 +165,7 @@ export class NgGroupComponent implements AfterViewInit {
       $(this).parents('li').fadeOut();
     });
 
+    // Items to drag
     $('.circle-list-ul > .circle-card').draggable({
       cursor: 'move',
       helper: 'clone',
@@ -172,9 +173,11 @@ export class NgGroupComponent implements AfterViewInit {
       grid: [50, 20],
       iframeFix: true,
       start: function (e, ui) {
+        console.log('circle-card START');
         ui.helper.addClass(selectedClass);
       },
       stop: function (e, ui) {
+        console.log('circle-card STOP');
         // reset group positions
         $('.' + selectedClass).css({
           top: 0,
@@ -182,6 +185,7 @@ export class NgGroupComponent implements AfterViewInit {
         }).removeClass(selectedClass);
       },
       drag: function (e, ui) {
+        console.log('circle-card DRAG');
         // set selected group position to main dragged object
         // this works because the position is relative to the starting position
         $('.' + selectedClass).css({
@@ -191,11 +195,13 @@ export class NgGroupComponent implements AfterViewInit {
       }
     });
 
+/*
     $('.circle-list-ul').droppable({
       greedy: true,
       hoverClass: 'data-hover',
       accept: '.circle-drop-item > .circle-card',
       over: function (event, ui) {
+        console.log('circle-list-ul OVER');
         const folderName = $(event.target).attr('id');
         const targetFolder = $(event.target).attr('id');
         const parentClass = $(ui.helper).parents('li');
@@ -203,10 +209,12 @@ export class NgGroupComponent implements AfterViewInit {
         $(ui.helper).find('.circle-bdr').append($("<span " + ngContentID + " class='draggable-tooltip'></span>"));
       },
       out: function (event, ui) {
+        console.log('circle-list-ul OUT');
         $(ui.helper).find('.draggable-tooltip').remove();
         $(ui.helper).find('.circle-bdr').append($("<span " + ngContentID + " class='draggable-tooltip delete'></span>"));
       },
       drop: function (event, ui) {
+        console.log('circle-list-ul DROP');
         const cloneItem = $(ui.draggable).clone().on('mousedown mouseup', function (e) {
           if (e.type == 'mousedown') {
             lastClick = e.timeStamp; // get mousedown time
@@ -223,16 +231,20 @@ export class NgGroupComponent implements AfterViewInit {
         outside = 1;
       }
     });
+    */
 
+    // Circles to drag the items
     $('.circle-drop').droppable({
       greedy: true,
       tolerance: 'pointer',
       hoverClass: 'drop-hover',
       over: function (event, ui) {
+        console.log('circle-drop OVER');
         outsideCircle = 1;
         $(ui.helper).find('.draggable-tooltip').remove();
       },
       drop: function (event, ui) {
+        console.log('circle-drop DROP');
         let cloneItem;
         if ($('.' + selectedClass).length == 1) {
           cloneItem = $('.' + selectedClass)
@@ -264,6 +276,7 @@ export class NgGroupComponent implements AfterViewInit {
         }
       },
       out: function (event, ui) {
+        console.log('circle-drop OUT');
         outsideCircle = 0;
         if (!$(ui.helper).hasClass('left-drop-card')) {
           $(ui.helper).find('.draggable-tooltip').remove();
