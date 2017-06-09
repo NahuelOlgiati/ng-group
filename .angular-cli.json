@@ -19,10 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "ng",
       "styles": [
-        "styles.css",
-        "../node_modules/jqueryui/jquery-ui.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "./assets/css/custom.scss"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

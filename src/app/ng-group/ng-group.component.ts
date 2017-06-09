@@ -1,14 +1,15 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef } from '@angular/core';
 
 declare var $: any;
 
 @Component({
   selector: 'ng-group',
-  templateUrl: './ng-group.component.html'
+  templateUrl: './ng-group.component.html',
+  styleUrls: ['./ng-group.component.scss']
 })
 export class NgGroupComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private el: ElementRef) { }
 
   ngAfterViewInit() {
 
@@ -20,7 +21,8 @@ export class NgGroupComponent implements AfterViewInit {
       circleWidth = windowWidth - circleLeft - 22 + 'px',
       circleHeight = windowHeight - 52 + 'px',
       selectedClass = 'ui-state-highlight',
-      clickDelay = 600; // milliseconds
+      clickDelay = 600, // milliseconds
+      ngContentID = this.el.nativeElement.firstChild.attributes[0].name;
     let outside = 0;
     let outsideCircle = 0;
     let lastClick, diffClick; // timestamps
@@ -64,7 +66,7 @@ export class NgGroupComponent implements AfterViewInit {
         subitem.fadeOut(function () {
           const $list = $('ul', $trash).length ?
             $('ul', $trash) :
-            $("<ul class='circle-drop-item ui-helper-reset clearfix'/>")
+            $("<ul " + ngContentID + " class='circle-drop-item ui-helper-reset clearfix'/>")
               .appendTo($trash);
           console.log($list);
           subitem.appendTo($list).fadeIn(function () {
@@ -88,7 +90,7 @@ export class NgGroupComponent implements AfterViewInit {
               $(ui.helper).find('.draggable-tooltip').remove();
             } else {
               $(ui.helper).find('.draggable-tooltip').remove();
-              $(ui.helper).find('.circle-bdr').append($("<span class='draggable-tooltip'></span>"));
+              $(ui.helper).find('.circle-bdr').append($("<span " + ngContentID + " class='draggable-tooltip'></span>"));
             }
           },
           drag: function (e, ui) {
@@ -209,11 +211,11 @@ export class NgGroupComponent implements AfterViewInit {
         const targetFolder = $(event.target).attr('id');
         const parentClass = $(ui.helper).parents('li');
         $(ui.helper).find('.draggable-tooltip').remove();
-        $(ui.helper).find('.circle-bdr').append($("<span class='draggable-tooltip'></span>"));
+        $(ui.helper).find('.circle-bdr').append($("<span " + ngContentID + " class='draggable-tooltip'></span>"));
       },
       out: function (event, ui) {
         $(ui.helper).find('.draggable-tooltip').remove();
-        $(ui.helper).find('.circle-bdr').append($("<span class='draggable-tooltip delete'></span>"));
+        $(ui.helper).find('.circle-bdr').append($("<span " + ngContentID + " class='draggable-tooltip delete'></span>"));
       },
       drop: function (event, ui) {
         const cloneItem = $(ui.draggable).clone().on('mousedown mouseup', function (e) {
@@ -276,7 +278,7 @@ export class NgGroupComponent implements AfterViewInit {
         outsideCircle = 0;
         if (!$(ui.helper).hasClass('left-drop-card')) {
           $(ui.helper).find('.draggable-tooltip').remove();
-          $(ui.helper).find('.circle-bdr').append($("<span class='draggable-tooltip delete'></span>"));
+          $(ui.helper).find('.circle-bdr').append($("<span " + ngContentID + " class='draggable-tooltip delete'></span>"));
         }
       }
     });
