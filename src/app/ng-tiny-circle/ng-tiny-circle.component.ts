@@ -1,15 +1,15 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef } from '@angular/core';
 
 declare var $: any;
 
 @Component({
-  selector: 'tiny-circle',
-  templateUrl: './tiny-circle.component.html',
-  styleUrls: ['./tiny-circle.component.scss']
+  selector: 'ng-tiny-circle',
+  templateUrl: './ng-tiny-circle.component.html',
+  styleUrls: ['./ng-tiny-circle.component.scss']
 })
-export class TinyCircleComponent implements AfterViewInit {
+export class NgTinyCircleComponent implements AfterViewInit {
 
-  constructor() { }
+  constructor(private el: ElementRef) { }
 
   ngAfterViewInit() {
 
@@ -35,36 +35,36 @@ export class TinyCircleComponent implements AfterViewInit {
         start: 0
       };
 
-    const $container = $('#rotatescroll'),
+    const tinyCircle = this.el.nativeElement.querySelector('.tiny-circle'),
       opt = { interval: false, dotsSnap: true, dotsHide: false };
 
     const options = $.extend({}, defaults, opt),
       dots = [],
-      $viewport = $container.find('.viewport'),
-      $overview = $container.find('.overview'),
-      $slides = $overview.children(),
+      $viewport = tinyCircle.querySelector('.viewport'),
+      $overview = tinyCircle.querySelector('.overview'),
+      $slides = $overview.querySelectorAll('li'),
       slidesTotal = $slides.length,
-      $thumb = $container.find('.thumb'),
-      $links = $slides.find('a'),
+      $thumb = tinyCircle.querySelector('.thumb'),
+      $links = $overview.querySelectorAll('a'),
       containerSize = {
-        width: $container.outerWidth(true),
-        height: $container.outerHeight(true)
+        width: tinyCircle.offsetWidth,
+        height: tinyCircle.offsetHeight
       },
       slideSize = {
-        width: $slides.first().outerWidth(true),
-        height: $slides.first().outerHeight(true)
+        width: $slides[0].offsetWidth,
+        height: $slides[0].offsetHeight
       },
       thumbSize = {
-        width: $thumb.outerWidth(true),
-        height: $thumb.outerHeight(true)
+        width: $thumb.offsetWidth,
+        height: $thumb.offsetHeight
       },
       touchEvents = 'ontouchstart' in window,
       hasRequestAnimationFrame = 'requestAnimationFrame' in window;
 
-    $dots = $container.find('.dot');
+    $dots = tinyCircle.querySelector('.dot');
     dotSize = {
-      width: $dots.outerWidth(),
-      height: $dots.outerHeight()
+      width: $dots.offsetWidth,
+      height: $dots.offsetHeight
     };
     _defaults = defaults;
     _name = pluginName;
@@ -82,7 +82,8 @@ export class TinyCircleComponent implements AfterViewInit {
 
       $dots.remove();
 
-      $slides.each(function (index, slide) {
+      for (let index = 0; index < $slides.length; index++) {
+        const slide = $slides[index];
         let $dotClone = null;
         const angle = parseInt($(slide).attr('data-degrees'), 10) || (index * 360 / slidesTotal),
           position = {
@@ -90,13 +91,10 @@ export class TinyCircleComponent implements AfterViewInit {
             left: Math.sin(_toRadians(angle)) * options.radius + containerSize.width / 2 - dotSize.width / 2
           };
 
-        if ($dots.length > 0) {
-          $dotClone = $dots.clone();
-          $dotClone
-            .addClass($(slide).attr('data-classname'))
-            .css(position);
-
-          docFragment.appendChild($dotClone[0]);
+        if ($dots) {
+          $dotClone = $dots.cloneNode(true);
+          $dotClone.style.position = position;
+          docFragment.appendChild($dotClone);
         }
 
         dots.push({
@@ -104,24 +102,25 @@ export class TinyCircleComponent implements AfterViewInit {
           , 'slide': slide
           , 'dot': $dotClone
         });
-      });
+      }
 
       dots.sort(function (dotA, dotB) {
         return dotA.angle - dotB.angle;
       });
 
-      $.each(dots, function (index, dot) {
+      for (let index = 0; index < dots.length; index++) {
+        const dot = dots[index];
         if ($(dot.dot).length > 0) {
           $(dot.dot)
             .addClass('dot-' + (index + 1))
             .attr('data-slide-index', index)
             .html('<span>' + (index + 1) + '</span>');
         }
-      });
+      }
 
-      $container.append(docFragment);
+      tinyCircle.appendChild(docFragment);
 
-      $dots = $container.find('.dot');
+      $dots = tinyCircle.querySelector('.dot');
       console.log($dots);
     };
 
@@ -148,7 +147,7 @@ export class TinyCircleComponent implements AfterViewInit {
       return radians * 180 / Math.PI;
     };
 
-    const _findShortestPath = function (angleA: number, angleB: number) {
+    const _querySelectorShortestPath = function (angleA: number, angleB: number) {
       let angleCW, angleCCW, angleShortest;
 
       if (angleA > angleB) {
@@ -164,7 +163,7 @@ export class TinyCircleComponent implements AfterViewInit {
       return [angleShortest, angleCCW, angleCW];
     };
 
-    const _findClosestSlide = function (angle: number) {
+    const _querySelectorClosestSlide = function (angle: number) {
       let closestDotAngleToAngleCCW = 9999,
         closestDotAngleToAngleCW = 9999,
         closestDotAngleToAngle = 9999,
@@ -173,7 +172,7 @@ export class TinyCircleComponent implements AfterViewInit {
         closestSlide = 0;
 
       $.each(dots, function (index, dot) {
-        const delta = _findShortestPath(dot.angle, angle);
+        const delta = _querySelectorShortestPath(dot.angle, angle);
 
         if (Math.abs(delta[0]) < Math.abs(closestDotAngleToAngle)) {
           closestDotAngleToAngle = delta[0];
@@ -192,25 +191,24 @@ export class TinyCircleComponent implements AfterViewInit {
       });
 
       return [
-        [closestSlide, closestSlideCCW, closestSlideCW]
-        , [closestDotAngleToAngle, closestDotAngleToAngleCCW, closestDotAngleToAngleCW]
+        [closestSlide, closestSlideCCW, closestSlideCW],
+        [closestDotAngleToAngle, closestDotAngleToAngleCCW, closestDotAngleToAngleCW]
       ];
     };
 
     const _setCSS = function (angle: number, fireCallback?: any) {
-      const closestSlidesAndAngles = _findClosestSlide(angle);
+      const closestSlidesAndAngles = _querySelectorClosestSlide(angle);
       const closestSlides = closestSlidesAndAngles[0];
       const closestAngles = closestSlidesAndAngles[1];
 
-      $overview.css('left', -(closestSlides[1] * slideSize.width + Math.abs(closestAngles[1]) * slideSize.width / (Math.abs(closestAngles[1]) + Math.abs(closestAngles[2]))));
-      $thumb.css({
-        top: -Math.cos(_toRadians(angle)) * options.radius + (containerSize.height / 2 - thumbSize.height / 2)
-        , left: Math.sin(_toRadians(angle)) * options.radius + (containerSize.width / 2 - thumbSize.width / 2)
-      });
+      $overview.style.left = -(closestSlides[1] * slideSize.width + Math.abs(closestAngles[1]) * slideSize.width / (Math.abs(closestAngles[1]) + Math.abs(closestAngles[2])));
+      $thumb.style.top = -Math.cos(_toRadians(angle)) * options.radius + (containerSize.height / 2 - thumbSize.height / 2);
+      $thumb.style.left = Math.sin(_toRadians(angle)) * options.radius + (containerSize.width / 2 - thumbSize.width / 2);
 
       if (fireCallback) {
         // The move event will trigger when the carousel slides to a new slide.
-        $container.trigger('move', [$slides[slideCurrent], slideCurrent]);
+        //tinyCircle.dispatchEvent(moveEvent);
+        //tinyCircle.dispatchEvent('move', [$slides[slideCurrent], slideCurrent]);
       }
     };
 
@@ -252,7 +250,7 @@ export class TinyCircleComponent implements AfterViewInit {
       }
 
       const angleDestination = dots[slideIndex] && dots[slideIndex].angle,
-        angleDelta = _findShortestPath(angleDestination, angleCurrent)[0],
+        angleDelta = _querySelectorShortestPath(angleDestination, angleCurrent)[0],
         angleStep = angleDelta > 0 ? -2 : 2;
 
       slideCurrent = slideIndex;
@@ -276,24 +274,24 @@ export class TinyCircleComponent implements AfterViewInit {
       dragging = false;
       event.preventDefault();
 
-      $(document).unbind('mousemove mouseup');
-      $thumb.unbind('mouseup');
+      document.removeEventListener('mousemove');
+      document.removeEventListener('mouseup');
+      $thumb.removeEventListener('mouseup');
 
       if (options.dotsHide) {
         $dots.stop(true, true).fadeOut('slow');
       }
 
       if (options.dotsSnap) {
-        move(_findClosestSlide(angleCurrent)[0][0]);
+        move(_querySelectorClosestSlide(angleCurrent)[0][0]);
       }
     };
 
     const _drag = function (event) {
-      const containerOffset = $container.offset(),
-        thumbPositionNew = {
-          left: _page(event).x - containerOffset.left - (containerSize.width / 2),
-          top: _page(event).y - containerOffset.top - (containerSize.height / 2)
-        };
+      const thumbPositionNew = {
+        left: _page(event).x - tinyCircle.style.left - (containerSize.width / 2),
+        top: _page(event).y - tinyCircle.style.top - (containerSize.height / 2)
+      };
 
       angleCurrent = _sanitizeAngle(
         _toDegrees(
@@ -330,7 +328,7 @@ export class TinyCircleComponent implements AfterViewInit {
 
       $(document).mousemove(_drag);
       $(document).mouseup(_endDrag);
-      $thumb.mouseup(_endDrag);
+      $thumb.addEventListener('mouseup', _endDrag);
 
       if (options.dotsHide) {
         $dots.stop(true, true).fadeIn('slow');
@@ -353,25 +351,28 @@ export class TinyCircleComponent implements AfterViewInit {
 
     const _setEvents = function () {
       if (touchEvents) {
-        $container[0].ontouchstart = _startDrag;
-        $container[0].ontouchmove = _drag;
-        $container[0].ontouchend = _endDrag;
+        tinyCircle[0].ontouchstart = _startDrag;
+        tinyCircle[0].ontouchmove = _drag;
+        tinyCircle[0].ontouchend = _endDrag;
       }
 
-      $thumb.bind('mousedown', _startDrag);
-
-      if (touchEvents) {
-        $container.delegate('.dot', 'touchstart', snapHandler);
-      }
-      $container.delegate('.dot', 'mousedown', snapHandler);
+      $thumb.addEventListener('mousedown', _startDrag);
+      /*
+            if (touchEvents) {
+              tinyCircle.delegate('.dot', 'touchstart', snapHandler);
+            }
+            tinyCircle.delegate('.dot', 'mousedown', snapHandler);
+            */
     };
 
     const _initialize = function () {
+
       _setDots();
 
+      const clone = $slides[0].cloneNode(true);
+      clone.style.width = slideSize.width * ($slides.length + 1);
       $overview
-        .append($slides.first().clone())
-        .css('width', slideSize.width * ($slides.length + 1));
+        .appendChild(clone);
 
       _setEvents();
 

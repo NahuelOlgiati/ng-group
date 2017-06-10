@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FiendsCircleComponent } from './fiends-circle/fiends-circle.component';
 import { TinyCircleComponent } from './tiny-circle/tiny-circle.component';
+import { NgTinyCircleComponent } from './ng-tiny-circle/ng-tiny-circle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FiendsCircleComponent,
-    TinyCircleComponent
+    TinyCircleComponent,
+    NgTinyCircleComponent
   ],
   imports: [
     BrowserModule,
