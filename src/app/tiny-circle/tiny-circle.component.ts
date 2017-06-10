@@ -36,7 +36,7 @@ export class TinyCircleComponent implements AfterViewInit {
       };
 
     const $container = $('#rotatescroll'),
-      opt = { interval: true, dotsSnap: true, dotsHide: false };
+      opt = { interval: false, dotsSnap: true, dotsHide: false };
 
     const options = $.extend({}, defaults, opt),
       dots = [],

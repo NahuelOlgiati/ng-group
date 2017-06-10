@@ -4,13 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { NgGroupComponent } from './ng-group/ng-group.component';
+import { FiendsCircleComponent } from './fiends-circle/fiends-circle.component';
 import { TinyCircleComponent } from './tiny-circle/tiny-circle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NgGroupComponent,
+    FiendsCircleComponent,
     TinyCircleComponent
   ],
   imports: [

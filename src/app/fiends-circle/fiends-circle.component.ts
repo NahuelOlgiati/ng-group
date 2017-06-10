@@ -3,11 +3,11 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
 declare var $: any;
 
 @Component({
-  selector: 'ng-group',
-  templateUrl: './ng-group.component.html',
-  styleUrls: ['./ng-group.component.scss']
+  selector: 'fiends-circle',
+  templateUrl: './fiends-circle.component.html',
+  styleUrls: ['./fiends-circle.component.scss']
 })
-export class NgGroupComponent implements AfterViewInit {
+export class FiendsCircleComponent implements AfterViewInit {
 
   constructor(private el: ElementRef) { }
 
