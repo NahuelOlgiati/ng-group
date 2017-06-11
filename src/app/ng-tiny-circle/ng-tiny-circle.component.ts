@@ -61,10 +61,10 @@ export class NgTinyCircleComponent implements AfterViewInit {
       touchEvents = 'ontouchstart' in window,
       hasRequestAnimationFrame = 'requestAnimationFrame' in window;
 
-    $dots = tinyCircle.querySelector('.dot');
+    $dots = tinyCircle.querySelectorAll('.dot');
     dotSize = {
-      width: $dots.offsetWidth,
-      height: $dots.offsetHeight
+      width: $dots[0].offsetWidth,
+      height: $dots[0].offsetHeight
     };
     _defaults = defaults;
     _name = pluginName;
@@ -75,25 +75,24 @@ export class NgTinyCircleComponent implements AfterViewInit {
 
     const _setDots = function () {
 
-      console.log('HOLA');
-      console.log($dots);
-
       const docFragment = document.createDocumentFragment();
 
-      $dots.remove();
+      $dots[0].remove();
 
       for (let index = 0; index < $slides.length; index++) {
         const slide = $slides[index];
         let $dotClone = null;
-        const angle = parseInt($(slide).attr('data-degrees'), 10) || (index * 360 / slidesTotal),
+
+        const angle = index * 360 / slidesTotal,
           position = {
             top: -Math.cos(_toRadians(angle)) * options.radius + containerSize.height / 2 - dotSize.height / 2,
             left: Math.sin(_toRadians(angle)) * options.radius + containerSize.width / 2 - dotSize.width / 2
           };
 
         if ($dots) {
-          $dotClone = $dots.cloneNode(true);
-          $dotClone.style.position = position;
+          $dotClone = $dots[0].cloneNode(true);
+          $dotClone.style.top = position.top + 'px';
+          $dotClone.style.left = position.left + 'px';
           docFragment.appendChild($dotClone);
         }
 
@@ -120,8 +119,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
 
       tinyCircle.appendChild(docFragment);
 
-      $dots = tinyCircle.querySelector('.dot');
-      console.log($dots);
+      $dots = tinyCircle.querySelectorAll('.dot');
     };
 
     const stop = function () {
@@ -201,9 +199,13 @@ export class NgTinyCircleComponent implements AfterViewInit {
       const closestSlides = closestSlidesAndAngles[0];
       const closestAngles = closestSlidesAndAngles[1];
 
-      $overview.style.left = -(closestSlides[1] * slideSize.width + Math.abs(closestAngles[1]) * slideSize.width / (Math.abs(closestAngles[1]) + Math.abs(closestAngles[2])));
-      $thumb.style.top = -Math.cos(_toRadians(angle)) * options.radius + (containerSize.height / 2 - thumbSize.height / 2);
-      $thumb.style.left = Math.sin(_toRadians(angle)) * options.radius + (containerSize.width / 2 - thumbSize.width / 2);
+      //console.log(angle);
+      //console.log(-Math.cos(_toRadians(angle)));
+
+
+      $overview.style.left = (-(closestSlides[1] * slideSize.width + Math.abs(closestAngles[1]) * slideSize.width / (Math.abs(closestAngles[1]) + Math.abs(closestAngles[2])))) + 'px';
+      $thumb.style.top = -Math.cos(_toRadians(angle)) * options.radius + (containerSize.height / 2 - thumbSize.height / 2) + 'px';
+      $thumb.style.left = Math.sin(_toRadians(angle)) * options.radius + (containerSize.width / 2 - thumbSize.width / 2) + 'px';
 
       if (fireCallback) {
         // The move event will trigger when the carousel slides to a new slide.
@@ -344,6 +346,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
       event.stopImmediatePropagation();
 
       stop();
+      console.log($(this).attr('data-slide-index'));
       move($(this).attr('data-slide-index'));
 
       return false;
@@ -370,9 +373,8 @@ export class NgTinyCircleComponent implements AfterViewInit {
       _setDots();
 
       const clone = $slides[0].cloneNode(true);
-      clone.style.width = slideSize.width * ($slides.length + 1);
-      $overview
-        .appendChild(clone);
+      $overview.appendChild(clone);
+      $overview.style.width = slideSize.width * ($slides.length + 1) + 'px';
 
       _setEvents();
 
