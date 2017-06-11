@@ -75,9 +75,6 @@ export class TinyCircleComponent implements AfterViewInit {
 
     const _setDots = function () {
 
-      console.log('HOLA');
-      console.log($dots);
-
       const docFragment = document.createDocumentFragment();
 
       $dots.remove();
@@ -122,7 +119,6 @@ export class TinyCircleComponent implements AfterViewInit {
       $container.append(docFragment);
 
       $dots = $container.find('.dot');
-      console.log($dots);
     };
 
     const stop = function () {
@@ -270,6 +266,9 @@ export class TinyCircleComponent implements AfterViewInit {
     };
 
     const _endDrag = function (event) {
+      console.log(event.target);
+      console.log($(event.target));
+      console.log($(event.target).hasClass('dot'));
       if ($(event.target).hasClass('dot')) {
         return false;
       }
@@ -346,6 +345,7 @@ export class TinyCircleComponent implements AfterViewInit {
       event.stopImmediatePropagation();
 
       stop();
+
       move($(this).attr('data-slide-index'));
 
       return false;

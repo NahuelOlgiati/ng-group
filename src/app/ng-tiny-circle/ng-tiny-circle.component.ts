@@ -38,7 +38,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
     const tinyCircle = this.el.nativeElement.querySelector('.tiny-circle'),
       opt = { interval: false, dotsSnap: true, dotsHide: false };
 
-    const options = $.extend({}, defaults, opt),
+    const options = Object.assign(defaults, opt),
       dots = [],
       $viewport = tinyCircle.querySelector('.viewport'),
       $overview = tinyCircle.querySelector('.overview'),
@@ -109,11 +109,15 @@ export class NgTinyCircleComponent implements AfterViewInit {
 
       for (let index = 0; index < dots.length; index++) {
         const dot = dots[index];
-        if ($(dot.dot).length > 0) {
-          $(dot.dot)
-            .addClass('dot-' + (index + 1))
-            .attr('data-slide-index', index)
-            .html('<span>' + (index + 1) + '</span>');
+
+        if (dot.dot) {
+          dot.dot.classList.add('dot-' + (index + 1));
+          const att: any = document.createAttribute('data-slide-index');
+          att.value = index;
+          dot.dot.setAttributeNode(att);
+          const span: any = document.createElement('span');
+          span.innerHTML = index + 1;
+          dot.dot.appendChild(span);
         }
       }
 
@@ -169,7 +173,8 @@ export class NgTinyCircleComponent implements AfterViewInit {
         closestSlideCW = 0,
         closestSlide = 0;
 
-      $.each(dots, function (index, dot) {
+      for (let index = 0; index < dots.length; index++) {
+        const dot = dots[index];
         const delta = _querySelectorShortestPath(dot.angle, angle);
 
         if (Math.abs(delta[0]) < Math.abs(closestDotAngleToAngle)) {
@@ -186,7 +191,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
           closestDotAngleToAngleCW = delta[2];
           closestSlideCW = index;
         }
-      });
+      }
 
       return [
         [closestSlide, closestSlideCCW, closestSlideCW],
@@ -198,10 +203,6 @@ export class NgTinyCircleComponent implements AfterViewInit {
       const closestSlidesAndAngles = _querySelectorClosestSlide(angle);
       const closestSlides = closestSlidesAndAngles[0];
       const closestAngles = closestSlidesAndAngles[1];
-
-      //console.log(angle);
-      //console.log(-Math.cos(_toRadians(angle)));
-
 
       $overview.style.left = (-(closestSlides[1] * slideSize.width + Math.abs(closestAngles[1]) * slideSize.width / (Math.abs(closestAngles[1]) + Math.abs(closestAngles[2])))) + 'px';
       $thumb.style.top = -Math.cos(_toRadians(angle)) * options.radius + (containerSize.height / 2 - thumbSize.height / 2) + 'px';
@@ -270,7 +271,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
     };
 
     const _endDrag = function (event) {
-      if ($(event.target).hasClass('dot')) {
+      if (event.target.classList.contains('dot')) {
         return false;
       }
       dragging = false;
@@ -322,14 +323,14 @@ export class NgTinyCircleComponent implements AfterViewInit {
       isTouchEvent = event.type == 'touchstart';
       dragging = true;
 
-      if ($(event.target).hasClass('dot')) {
+      if (event.target.classList.contains('dot')) {
         return false;
       }
 
       stop();
 
-      $(document).mousemove(_drag);
-      $(document).mouseup(_endDrag);
+      document.addEventListener('mousemove', _drag);
+      document.addEventListener('mouseup', _endDrag);
       $thumb.addEventListener('mouseup', _endDrag);
 
       if (options.dotsHide) {
@@ -346,7 +347,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
       event.stopImmediatePropagation();
 
       stop();
-      console.log($(this).attr('data-slide-index'));
+
       move($(this).attr('data-slide-index'));
 
       return false;
