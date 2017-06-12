@@ -291,10 +291,11 @@ export class NgTinyCircleComponent implements AfterViewInit {
     };
 
     const _drag = function (event) {
-      const thumbPositionNew = {
-        left: _page(event).x - tinyCircle.style.left - (containerSize.width / 2),
-        top: _page(event).y - tinyCircle.style.top - (containerSize.height / 2)
-      };
+      const containerOffset = tinyCircle.getBoundingClientRect(),
+        thumbPositionNew = {
+          left: _page(event).x - containerOffset.left - (containerSize.width / 2),
+          top: _page(event).y - containerOffset.top - (containerSize.height / 2)
+        };
 
       angleCurrent = _sanitizeAngle(
         _toDegrees(
