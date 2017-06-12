@@ -62,9 +62,10 @@ export class NgTinyCircleComponent implements AfterViewInit {
       hasRequestAnimationFrame = 'requestAnimationFrame' in window;
 
     $dots = tinyCircle.querySelectorAll('.dot');
+    const dotComputedStyle = window.getComputedStyle($dots[0], null);
     dotSize = {
-      width: $dots[0].offsetWidth,
-      height: $dots[0].offsetHeight
+      width: parseInt(dotComputedStyle.getPropertyValue('width'), 10),
+      height: parseInt(dotComputedStyle.getPropertyValue('height'), 10)
     };
     _defaults = defaults;
     _name = pluginName;
@@ -199,7 +200,7 @@ export class NgTinyCircleComponent implements AfterViewInit {
       ];
     };
 
-    const _setCSS = function (angle: number, fireCallback?: any) {
+    const _setCSS = function (angle: number, fireCallback?: boolean) {
       const closestSlidesAndAngles = _querySelectorClosestSlide(angle);
       const closestSlides = closestSlidesAndAngles[0];
       const closestAngles = closestSlidesAndAngles[1];
@@ -210,7 +211,6 @@ export class NgTinyCircleComponent implements AfterViewInit {
 
       if (fireCallback) {
         // The move event will trigger when the carousel slides to a new slide.
-        //tinyCircle.dispatchEvent(moveEvent);
         //tinyCircle.dispatchEvent('move', [$slides[slideCurrent], slideCurrent]);
       }
     };
@@ -348,25 +348,28 @@ export class NgTinyCircleComponent implements AfterViewInit {
 
       stop();
 
-      move($(this).attr('data-slide-index'));
+      move(event.target.getAttribute('data-slide-index'));
 
       return false;
     };
 
     const _setEvents = function () {
       if (touchEvents) {
-        tinyCircle[0].ontouchstart = _startDrag;
-        tinyCircle[0].ontouchmove = _drag;
-        tinyCircle[0].ontouchend = _endDrag;
+        tinyCircle.ontouchstart = _startDrag;
+        tinyCircle.ontouchmove = _drag;
+        tinyCircle.ontouchend = _endDrag;
       }
 
       $thumb.addEventListener('mousedown', _startDrag);
-      /*
-            if (touchEvents) {
-              tinyCircle.delegate('.dot', 'touchstart', snapHandler);
-            }
-            tinyCircle.delegate('.dot', 'mousedown', snapHandler);
-            */
+
+      if (touchEvents) {
+        for (let index = 0; index < dots.length; index++) {
+          dots[index].dot.addEventListener('touchstart', snapHandler);
+        }
+      }
+      for (let index = 0; index < dots.length; index++) {
+        dots[index].dot.addEventListener('mousedown', snapHandler);
+      }
     };
 
     const _initialize = function () {
