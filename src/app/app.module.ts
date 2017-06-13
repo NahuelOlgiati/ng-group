@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { DragulaModule } from 'ng2-dragula';
+
+import { DragDemoComponent } from './drag-demo/drag-demo.component';
+
 import { AppComponent } from './app.component';
 import { FiendsCircleComponent } from './fiends-circle/fiends-circle.component';
 
@@ -20,12 +24,14 @@ import { TnComponent } from './tn/tn.component';
     TinyCircleComponent,
     NgTinyCircleComponent,
     OngTinyCircleComponent,
-    TnComponent
+    TnComponent,
+    DragDemoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    DragulaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
