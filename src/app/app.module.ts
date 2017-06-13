@@ -9,6 +9,7 @@ import { FiendsCircleComponent } from './fiends-circle/fiends-circle.component';
 import { TinyCircleComponent } from './tiny-circle/tiny-circle.component';
 import { NgTinyCircleComponent } from './ng-tiny-circle/ng-tiny-circle.component';
 import { OngTinyCircleComponent } from './ong-tiny-circle/ong-tiny-circle.component';
+import { TnComponent } from './tn/tn.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OngTinyCircleComponent } from './ong-tiny-circle/ong-tiny-circle.compon
 
     TinyCircleComponent,
     NgTinyCircleComponent,
-    OngTinyCircleComponent
+    OngTinyCircleComponent,
+    TnComponent
   ],
   imports: [
     BrowserModule,

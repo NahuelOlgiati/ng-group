@@ -3,11 +3,11 @@ import { Component, AfterViewInit } from '@angular/core';
 declare var $: any;
 
 @Component({
-  selector: 'tiny-circle',
-  templateUrl: './tiny-circle.component.html',
-  styleUrls: ['./tiny-circle.component.scss']
+  selector: 'tn',
+  templateUrl: './tn.component.html',
+  styleUrls: ['./tn.component.scss']
 })
-export class TinyCircleComponent implements AfterViewInit {
+export class TnComponent implements AfterViewInit {
 
   constructor() { }
 
@@ -35,7 +35,7 @@ export class TinyCircleComponent implements AfterViewInit {
         start: 0
       };
 
-    const $container = $('.tiny-circle'),
+    const $container = $('#circleslider3'),
       opt = { interval: false, dotsSnap: true, dotsHide: false, radius: 184 };
 
     const options = $.extend({}, defaults, opt),

@@ -10,7 +10,7 @@
     -webkit-user-select: none;
     -ms-user-select: none;
   }
-  .tiny-circle{
+  .tiny-circle {
     height: 350px;
     padding: 25px;
     position: relative;
@@ -21,9 +21,9 @@
       margin: 0 auto;
       overflow: hidden;
       width: 350px;
-      pointer-events: none;
     }
     .overview {
+      background-color: #efefef;
       position: absolute;
       width: 798px;
       list-style: none;
@@ -34,6 +34,7 @@
       li {
         height: 350px;
         width: 350px;
+        margin: 0 20px 0 0;
         float: left;
         position: relative;
       }
@@ -49,7 +50,6 @@
     }
     .thumb {
       background: url(../../assets/images/bg-thumb.png) no-repeat 50% 50%;
-      touch-action: none;
       position: absolute;
       top: -3px;
       cursor: pointer;
