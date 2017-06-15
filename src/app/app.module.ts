@@ -4,8 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { DragulaModule } from 'ng2-dragula';
+import { DndModule } from 'ng2-dnd';
 
 import { DragDemoComponent } from './drag-demo/drag-demo.component';
+import { DemoDndModule } from './dnd-demo/demo-dnd.module';
 
 import { AppComponent } from './app.component';
 import { FiendsCircleComponent } from './fiends-circle/fiends-circle.component';
@@ -33,7 +35,9 @@ import { TnComponent } from './tn/tn.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    DragulaModule
+    DragulaModule,
+    DndModule.forRoot(),
+    DemoDndModule
   ],
   providers: [],
   bootstrap: [AppComponent]

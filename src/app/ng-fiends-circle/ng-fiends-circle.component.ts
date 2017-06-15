@@ -3,6 +3,11 @@ import { DragulaService } from 'ng2-dragula';
 
 declare var $: any;
 
+export interface CircleContent {
+  name: string;
+  content: Array<number>;
+}
+
 @Component({
   selector: 'ng-fiends-circle',
   templateUrl: './ng-fiends-circle.component.html',
@@ -11,7 +16,7 @@ declare var $: any;
 export class NgFiendsCircleComponent implements AfterViewInit {
 
   private items: Array<string> = [];
-  private circles: Array<string> = [];
+  private circles: CircleContent[] = [];
 
   private selectedClass = 'ui-state-highlight';
   private clickDelay = 600; // milliseconds
@@ -28,9 +33,9 @@ export class NgFiendsCircleComponent implements AfterViewInit {
     this.items.push('Hugo');
     this.items.push('Pereira');
 
-    this.circles.push('Family');
-    this.circles.push('Friends');
-    this.circles.push('Private');
+    this.circles[1] = <CircleContent>{ name: 'Family', content: [] };
+    this.circles[2] = <CircleContent>{ name: 'Friends', content: [] };
+    this.circles[3] = <CircleContent>{ name: 'Private', content: [] };
 
     dragulaService.setOptions('main-bag', {
       isContainer: function (el) {
@@ -51,11 +56,22 @@ export class NgFiendsCircleComponent implements AfterViewInit {
         console.log('invalid');
         return false; // don't prevent any drags from initiating by default
       },
+      /*
       copy: function (el, source) {
         // To copy only elements in left container, the right container can still be sorted
         return source.id === 'left';
       },
-      copySortSource: false
+      */
+      copy: function (el, source) {
+        console.log('IS COPYNG');
+
+        console.log(el);
+        console.log(source);
+
+        // To copy only elements in left container, the right container can still be sorted
+        return true;
+      },
+      copySortSource: true
     });
 
     dragulaService.drop.subscribe((value: any) => {

@@ -41,18 +41,43 @@
             <div class="circle-right-ctn ">
 
               <!-- Circles -->
-              <ul class="circle-drop-ul clearfix" [dragula]="'main-bag'" [dragulaModel]='circles'>
+              <ul class="circle-drop-ul clearfix">
 
-                <li class="col-lg-4 m-b10 circle-popover" *ngFor="let circle of circles" [id]="circle">
+                <li class="col-lg-4 m-b10 circle-popover" *ngFor="let circle of circles; let i = index;">
                   <div class="circle-ui circle-drop">
                     <span class="dorp-action delete">1</span>
                     <span class="dorp-action add-new">1</span>
                     <div class="circle-drop-inner">
                       <div class="inner">
-                        <h5>{{ circle }}</h5>
+                        <h5>{{ circle[i].name }}</h5>
                         <span class="members">0</span>
                       </div>
                     </div>
+
+
+                    <ul class='circle-drop-item ui-helper-reset clearfix' [dragula]="'main-bag'" [dragulaModel]='circles[i].content'>
+
+                        <li class="col-lg-4 col-md-4 circle-card ui-draggable ui-draggable-handle dingdon"  *ngFor="let content of circles[i].content; let z = index;">
+                          <div class="circle-bdr">
+                            <div class="circle-list-item drag-cursor">
+                              <span class="fa fa-times  close-btn"></span>
+                              <div class="list-row">
+                                <span class="item-cell" href="#">
+                                    <img  alt="" height="100%" src="../../assets/images/photo.png" width="100%" style="display: inline-block; height: 22px;">
+                                </span>
+                                <div class="item-cell item-dec">
+                                  <h5>{{ circles[i].content[z] }}</h5>
+                                  <span class="level-icon"><i  class="fa fa-star"></i> <i  class="fa fa-trophy"></i>
+                                        <i  class="fa fa-dot-circle-o"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                    </ul>
+
                   </div>
                 </li>
 
