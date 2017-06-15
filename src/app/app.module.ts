@@ -12,6 +12,7 @@ import { DemoDndModule } from './dnd-demo/demo-dnd.module';
 import { AppComponent } from './app.component';
 import { FiendsCircleComponent } from './fiends-circle/fiends-circle.component';
 import { NgFiendsCircleComponent } from './ng-fiends-circle/ng-fiends-circle.component';
+import { OngFiendsCircleComponent } from './ong-fiends-circle/ong-fiends-circle.component';
 
 import { TinyCircleComponent } from './tiny-circle/tiny-circle.component';
 import { NgTinyCircleComponent } from './ng-tiny-circle/ng-tiny-circle.component';
@@ -24,6 +25,7 @@ import { TnComponent } from './tn/tn.component';
 
     FiendsCircleComponent,
     NgFiendsCircleComponent,
+    OngFiendsCircleComponent,
 
     TinyCircleComponent,
     NgTinyCircleComponent,
