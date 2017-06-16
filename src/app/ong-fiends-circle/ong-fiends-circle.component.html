@@ -14,8 +14,8 @@
               <!-- Items to drag -->
               <ul class="circle-list-ul clearfix">
 
-                <li class="col-lg-4 col-md-4 circle-card left-drop-card" *ngFor="let product of availableProducts" dnd-draggable
-                  [dragData]="product" [dropZones]="circles">
+                <li class="col-lg-4 col-md-4 circle-card left-drop-card" *ngFor="let people of peoples" dnd-draggable
+                  [dragData]="people" [dropZones]="getGroupsNames()">
                   <div class=" circle-bdr ">
                     <div class="circle-list-item drag-cursor ">
                       <span class="fa fa-times close-btn "></span>
@@ -24,7 +24,7 @@
         							<img src="../../assets/images/photo.png " alt=" " width="100% " height="100% ">
       							</span>
                         <div class="item-cell item-dec ">
-                          <h5>{{ product.name }}</h5>
+                          <h5>{{ people.name }}</h5>
                           <span class="level-icon "><i class="fa fa-star "></i> <i class="fa fa-trophy "></i>
                                     	<i class="fa fa-dot-circle-o "></i>
                                   	</span>
@@ -44,23 +44,23 @@
               <!-- Circles -->
               <ul class="circle-drop-ul clearfix ">
 
-                <li class="col-lg-4 m-b10 circle-popover " *ngFor="let circle of circles; let i = index" dnd-droppable (onDropSuccess)="addToBasket($event)"
-                  [dropZones]="[circle]">
+                <li class="col-lg-4 m-b10 circle-popover " *ngFor="let group of groups; let i = index" dnd-droppable (onDropSuccess)="addPeople($event, group.name)"
+                  [dropZones]="[group.name]">
                   <div class="circle-ui circle-drop ">
                     <span class="dorp-action delete ">1</span>
                     <span class="dorp-action add-new ">1</span>
                     <div class="circle-drop-inner ">
                       <div class="inner ">
-                        <h5>{{ circle }}</h5>
+                        <h5>{{ group.name }}</h5>
                         <span class="members ">0</span>
                       </div>
                     </div>
 
                     <ul class='circle-drop-item ui-helper-reset clearfix'>
 
-                      <li class="col-lg-4 col-md-4 circle-card ui-draggable ui-draggable-handle dingdon" *ngFor="let product of shoppingBasket"
-                        [style.left]="product.style.left" [style.top]="product.style.top" [style.width]="product.style.width"
-                        [style.opacity]="product.style.opacity">
+                      <li class="col-lg-4 col-md-4 circle-card ui-draggable ui-draggable-handle dingdon" *ngFor="let people of groups[i].peoples"
+                        [style.left]="people.style.left" [style.top]="people.style.top" [style.width]="people.style.width"
+                        [style.opacity]="people.style.opacity">
 
                         <div class="circle-bdr ">
                           <div class="circle-list-item drag-cursor ">
@@ -70,7 +70,7 @@
                                     <img  alt=" " height="100% " src="../../assets/images/photo.png " width="100%" style="display: inline-block; height: 22px; ">
                                 </span>
                               <div class="item-cell item-dec ">
-                                <h5>{{ product.name }}</h5>
+                                <h5>{{ people.name }}</h5>
                                 <span class="level-icon "><i  class="fa fa-star "></i> <i  class="fa fa-trophy "></i>
                                         <i  class="fa fa-dot-circle-o "></i>
                                   </span>
