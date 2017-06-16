@@ -18,10 +18,10 @@ export class OngFiendsCircleComponent implements AfterViewInit {
 
   private conf = {
     radius: 60,
-    center: null,
     groupItemWidth: 22,
     itemsPerGroup: 10
   };
+  private center: number[];
   private peoples: People[] = [];
   private groups: Group[] = [new Group('Friends', []), new Group('Family', []), new Group('Private', [])];
 
@@ -33,11 +33,10 @@ export class OngFiendsCircleComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const offsetWidth = this.el.nativeElement.querySelector('.circle-drop').offsetWidth;
-    const offsetHeight = this.el.nativeElement.querySelector('.circle-drop').offsetHeight;
-    const centerX = (offsetWidth / 2) - (this.conf.groupItemWidth / 2);
-    const centerY = (offsetHeight / 2) - (this.conf.groupItemWidth / 2);
-    this.conf.center = [centerX, centerY];
+    const circle = this.el.nativeElement.querySelector('.circle-drop');
+    const centerX = (circle.offsetWidth / 2) - (this.conf.groupItemWidth / 2);
+    const centerY = (circle.offsetHeight / 2) - (this.conf.groupItemWidth / 2);
+    this.center = [centerX, centerY];
   }
 
   private addPeople($event: any, groupName: string): void {
@@ -54,8 +53,8 @@ export class OngFiendsCircleComponent implements AfterViewInit {
   private coord(count: number): any {
     const itemAngle = 360 / this.conf.itemsPerGroup;
     const a = (-180 + count * itemAngle) * Math.PI / 180; // to radians
-    const x = (Math.sin(a) * this.conf.radius + this.conf.center[0]).toPrecision(4) + 'px';
-    const y = (Math.cos(a) * this.conf.radius + this.conf.center[1]).toPrecision(4) + 'px';
+    const x = (Math.sin(a) * this.conf.radius + this.center[0]).toPrecision(4) + 'px';
+    const y = (Math.cos(a) * this.conf.radius + this.center[1]).toPrecision(4) + 'px';
     return { x: x, y: y };
   }
 
