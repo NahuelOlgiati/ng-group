@@ -1,43 +1,3 @@
-<h4>Drag-and-Drop - Shopping basket</h4>
-<div class="row">
-
-  <div class="col-sm-3">
-    <div class="panel panel-success">
-      <div class="panel-heading">Available products</div>
-      <div class="panel-body">
-        <ul>
-          <li *ngFor="let product of availableProducts" class="panel panel-default" dnd-draggable [dragEnabled]="product.quantity>0"
-            [dragData]="product" (onDragSuccess)="orderedProduct($event)" [dropZones]="['demo1']">
-            <div class="panel-body">
-              <div [hidden]="product.quantity===0">{{product.name}} - \${{product.cost}}<br>(available: {{product.quantity}})</div>
-              <div [hidden]="product.quantity>0">
-                <del>{{product.name}}</del><br>(NOT available)</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-3">
-    <div dnd-droppable (onDropSuccess)="addToBasket($event)" [dropZones]="['demo1']" class="panel panel-info">
-      <div class="panel-heading">Shopping Basket<br>(to pay: \${{totalCost()}})</div>
-      <div class="panel-body">
-        <div *ngFor="let product of shoppingBasket" class="panel panel-default">
-          <div class="panel-body">
-            {{product.name}}<br>(ordered: {{product.quantity}}<br>cost: \${{product.cost * product.quantity}})
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-
-
-
 <div id="wrap">
 
   <!-- MAIN-WRAPPER -->
@@ -54,8 +14,8 @@
               <!-- Items to drag -->
               <ul class="circle-list-ul clearfix">
 
-                <li class="col-lg-4 col-md-4 circle-card left-drop-card" *ngFor="let product of availableProducts" class="panel panel-default"
-                  dnd-draggable [dragEnabled]="product.quantity>0" [dragData]="product" [dropZones]="['demo1']">
+                <li class="col-lg-4 col-md-4 circle-card left-drop-card" *ngFor="let product of availableProducts" dnd-draggable
+                  [dragData]="product" [dropZones]="circles">
                   <div class=" circle-bdr ">
                     <div class="circle-list-item drag-cursor ">
                       <span class="fa fa-times close-btn "></span>
@@ -84,7 +44,8 @@
               <!-- Circles -->
               <ul class="circle-drop-ul clearfix ">
 
-                <li class="col-lg-4 m-b10 circle-popover " *ngFor="let circle of circles" dnd-droppable (onDropSuccess)="addToBasket($event)" [dropZones]="['demo1']">
+                <li class="col-lg-4 m-b10 circle-popover " *ngFor="let circle of circles; let i = index" dnd-droppable (onDropSuccess)="addToBasket($event)"
+                  [dropZones]="[circle]">
                   <div class="circle-ui circle-drop ">
                     <span class="dorp-action delete ">1</span>
                     <span class="dorp-action add-new ">1</span>
@@ -97,8 +58,10 @@
 
                     <ul class='circle-drop-item ui-helper-reset clearfix'>
 
-                      <li class="col-lg-4 col-md-4 circle-card ui-draggable ui-draggable-handle dingdon " *ngFor="let product of shoppingBasket" 
-                         class="panel panel-info">
+                      <li class="col-lg-4 col-md-4 circle-card ui-draggable ui-draggable-handle dingdon" *ngFor="let product of shoppingBasket"
+                        [style.left]="product.style.left" [style.top]="product.style.top" [style.width]="product.style.width"
+                        [style.opacity]="product.style.opacity">
+
                         <div class="circle-bdr ">
                           <div class="circle-list-item drag-cursor ">
                             <span class="fa fa-times close-btn "></span>
@@ -115,6 +78,7 @@
                             </div>
                           </div>
                         </div>
+
                       </li>
 
                     </ul>
