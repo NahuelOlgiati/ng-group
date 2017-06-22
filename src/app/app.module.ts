@@ -19,6 +19,10 @@ import { NgTinyCircleComponent } from './ng-tiny-circle/ng-tiny-circle.component
 import { OngTinyCircleComponent } from './ong-tiny-circle/ong-tiny-circle.component';
 import { TnComponent } from './tn/tn.component';
 
+import { HexImageComponent } from './hex-image/hex-image.component';
+
+import { SafePipe } from './safe.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,10 +31,16 @@ import { TnComponent } from './tn/tn.component';
     NgFiendsCircleComponent,
     OngFiendsCircleComponent,
 
+
     TinyCircleComponent,
     NgTinyCircleComponent,
     OngTinyCircleComponent,
     TnComponent,
+
+    HexImageComponent,
+
+    SafePipe,
+
     DragDemoComponent
   ],
   imports: [
