@@ -21,6 +21,9 @@ import { TnComponent } from './tn/tn.component';
 
 import { HexImageComponent } from './hex-image/hex-image.component';
 
+import { NgvasModule } from 'ngvas';
+import { NgvasDemoComponent } from './ngvas-demo/ngvas-demo.component';
+
 import { SafePipe } from './safe.pipe';
 
 @NgModule({
@@ -39,6 +42,8 @@ import { SafePipe } from './safe.pipe';
 
     HexImageComponent,
 
+    NgvasDemoComponent,
+
     SafePipe,
 
     DragDemoComponent
@@ -49,7 +54,8 @@ import { SafePipe } from './safe.pipe';
     HttpModule,
     DragulaModule,
     DndModule.forRoot(),
-    DemoDndModule
+    DemoDndModule,
+    NgvasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
