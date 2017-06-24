@@ -24,6 +24,8 @@ import { HexImageComponent } from './hex-image/hex-image.component';
 import { NgvasModule } from 'ngvas';
 import { NgvasDemoComponent } from './ngvas-demo/ngvas-demo.component';
 
+import { GooeyMenuComponent } from './gooey-menu/gooey-menu.component';
+
 import { SafePipe } from './safe.pipe';
 
 @NgModule({
@@ -43,6 +45,8 @@ import { SafePipe } from './safe.pipe';
     HexImageComponent,
 
     NgvasDemoComponent,
+
+    GooeyMenuComponent,
 
     SafePipe,
 

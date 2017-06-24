@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>CSS Gooey Menu (Version 2)</title>
+import { Component } from '@angular/core';
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-      <link rel="stylesheet" href="css/style.css">
-
-
-</head>
-
-<body>
-  <h1>Gooey Menu</h1>
-<h2>Using CSS and SVG Filters</h2>
-<h3>By <a href="https://codepen.io/lbebber">Lucas Bebber</a></h3>
-<h4><a href="https://codepen.io/lbebber/pen/LELBEo" target="_blank">Version 1</a> - Version 2 - <a href="https://codepen.io/lbebber/pen/pvwZJp" target="_blank">Version 3</a> - <a href="https://codepen.io/lbebber/pen/rawQKR" target="_blank">Version 4</a></h4>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+@Component({
+  selector: 'gooey-menu',
+    template: `
 <nav class="menu">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
   <label class="menu-open-button" for="menu-open">
@@ -57,8 +41,8 @@
       </filter>
     </defs>
 </svg>
-  <!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
-
-
-</body>
-</html>
+`,
+  styleUrls: ['./gooey-menu.component.scss']
+})
+export class GooeyMenuComponent {
+}
