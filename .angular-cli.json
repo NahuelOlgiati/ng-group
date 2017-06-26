@@ -20,7 +20,8 @@
       "prefix": "ng",
       "styles": [
         "../node_modules/dragula/dist/dragula.min.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+       "./assets/css/hubeleke-menu.component.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

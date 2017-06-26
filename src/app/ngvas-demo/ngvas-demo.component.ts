@@ -1,9 +1,5 @@
 import { NgModule, Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { tweens, hitAreas } from 'ngvas';
-
 
 @Component({
   selector: 'ngvas-demo',
@@ -26,7 +22,7 @@ import { tweens, hitAreas } from 'ngvas';
       <ngvas-polygon fill='#ff0000' [x]='50' [y]='50' [sides]='[[ [100, 100], [150, 450] ]]'></ngvas-polygon>
       -->
     </ngvas>
-  `,
+  `
 })
 export class NgvasDemoComponent {
 

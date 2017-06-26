@@ -26,6 +26,8 @@ import { NgvasDemoComponent } from './ngvas-demo/ngvas-demo.component';
 
 import { GooeyMenuComponent } from './gooey-menu/gooey-menu.component';
 
+import { HubelekeMenuComponent } from './hubeleke-menu/hubeleke-menu.component';
+
 import { SafePipe } from './safe.pipe';
 
 @NgModule({
@@ -47,6 +49,8 @@ import { SafePipe } from './safe.pipe';
     NgvasDemoComponent,
 
     GooeyMenuComponent,
+
+    HubelekeMenuComponent,
 
     SafePipe,
 
