@@ -21,8 +21,8 @@ import { TnComponent } from './tn/tn.component';
 
 import { HexImageComponent } from './hex-image/hex-image.component';
 
-import { NgvasModule } from 'ngvas';
-import { NgvasDemoComponent } from './ngvas-demo/ngvas-demo.component';
+//import { NgvasModule } from 'ngvas';
+//import { NgvasDemoComponent } from './ngvas-demo/ngvas-demo.component';
 
 import { GooeyMenuComponent } from './gooey-menu/gooey-menu.component';
 
@@ -46,7 +46,7 @@ import { SafePipe } from './safe.pipe';
 
     HexImageComponent,
 
-    NgvasDemoComponent,
+    //NgvasDemoComponent,
 
     GooeyMenuComponent,
 
@@ -63,7 +63,7 @@ import { SafePipe } from './safe.pipe';
     DragulaModule,
     DndModule.forRoot(),
     DemoDndModule,
-    NgvasModule
+    //NgvasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
