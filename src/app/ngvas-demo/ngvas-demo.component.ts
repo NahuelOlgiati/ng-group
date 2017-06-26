@@ -1,9 +1,10 @@
 import { NgModule, Component } from '@angular/core';
-import { tweens, hitAreas } from 'ngvas';
+//import { tweens, hitAreas } from 'ngvas';
 
 @Component({
   selector: 'ngvas-demo',
   template: `
+  <!--
     <ngvas [width]="500" [height]="500" (ready)="tweenComplete()">
       <ngvas-rectangle [fill]="fill" [translate]="xy" [size]="size" [rotate]="rotate" origin="center"></ngvas-rectangle>
       <ngvas-circle [stroke]="stroke" [translate]="xy" [radius]="50" origin="center"></ngvas-circle>
@@ -13,6 +14,7 @@ import { tweens, hitAreas } from 'ngvas';
       <ngvas-arc fill="#ff0000" [x]="250" [y]="250" [radius]="50" [angle]="[270, 1000]" origin="center" [connectToCenter]="true"></ngvas-arc>
       <ngvas-quadratic [stroke]="{ width: 4 }" [x]="50" [y]="50" [curves]="[[ [100, 100], [150, 450], [400, 400] ]]"></ngvas-quadratic>
       <ngvas-text fill="#0000ff" [textStyle]="{ font: '48px Arial' }" [x]="50" [y]="250" text="Texto Bardero."></ngvas-text>
+      -->
       <!--<ngvas-image fill="rgba(0,0,0,0)" [width]="100" [height]="100" src="../test/bird.jpg" [x]="10" [y]="10" [translate]="[[400, 400], 2000]"></ngvas-image>-->
       <!--
       <ngvas-circle fill="#ff0000" [x]="250" [y]="250" [radius]="50" [translate]="[[50, 50], 1000]" origin="center"></ngvas-circle>
@@ -24,7 +26,9 @@ import { tweens, hitAreas } from 'ngvas';
       <ngvas-text fill="#0000ff" [textStyle]="{ font: "48px Arial" }" [x]="50" [y]="250" text="This is text."></ngvas-text>
       <ngvas-polygon fill="#ff0000" [x]="50" [y]="50" [sides]="[[ [100, 100], [150, 450] ]]"></ngvas-polygon>
       -->
+      <!--
     </ngvas>
+    -->
   `
 })
 export class NgvasDemoComponent {
@@ -43,11 +47,12 @@ export class NgvasDemoComponent {
   public squareFill = 0x666666;
   public squareTranslate: any[] = [250, 250];
 
-  public pixelHitArea = hitAreas.PixelHitArea;
+  //public pixelHitArea = hitAreas.PixelHitArea;
 
 
   public tweenComplete() {
     // Prevents Angular Error: 'Expression has changed after it was checked.'
+    /*
     setTimeout(() => {
       if (++this.i > 3) { this.i = 0; }
       this.rotate = [this._size[this.i] * 5, 1000, tweens.easings.easeInOutSine, () => this.tweenComplete()];
@@ -56,11 +61,12 @@ export class NgvasDemoComponent {
       this.fill = [this._fill[this.i], 1000, tweens.easings.easeInOutSine];
       this.stroke = [{ width: this._size[this.i] / 4, style: this._fill[this.i] }, 1000, tweens.easings.easeInOutSine];
     });
+    */
   }
 
   public onClick(e: MouseEvent): void {
     console.log(e);
-    this.squareTranslate = [[0, -100], 500, tweens.easings.easeOutCircular, () => this.squareTranslate = [[0, 100], 800, tweens.easings.easeOutBounce]];
+    //this.squareTranslate = [[0, -100], 500, tweens.easings.easeOutCircular, () => this.squareTranslate = [[0, 100], 800, tweens.easings.easeOutBounce]];
   }
 
   public onMouseEnter(e: MouseEvent): void {
