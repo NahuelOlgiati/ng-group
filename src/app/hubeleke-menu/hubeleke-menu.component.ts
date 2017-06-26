@@ -6,10 +6,10 @@ declare var $: any;
   selector: 'hubeleke-menu',
   template: `
 <div id="rotate-menu">
-    <a data-image="https://s-media-cache-ak0.pinimg.com/736x/e5/a0/69/e5a06942fa42823c88be5f3a834e063d--fantastic-art-bat-family.jpg">LOREM</a>
-    <a data-image="https://static.comicvine.com/uploads/scale_small/11128/111283887/5436234-9421608823-latest">IPSUM</a>
-    <a data-image="https://s-media-cache-ak0.pinimg.com/736x/e5/a0/69/e5a06942fa42823c88be5f3a834e063d--fantastic-art-bat-family.jpg">DOLOR</a>
-    <a data-image="https://s-media-cache-ak0.pinimg.com/736x/f0/ba/84/f0ba8451311a28cb3fa3c1c16872bf86.jpg">SIT AMET</a>
+    <a data-image="https://scontent.fsst1-1.fna.fbcdn.net/v/t31.0-8/18766463_10154509182312256_251697079675071171_o.jpg?oh=3f01a73e9ea67c6572527496afaf89bc&oe=59E18DF4">Que</a>
+    <a data-image="https://scontent.fsst1-1.fna.fbcdn.net/v/t1.0-0/s480x480/19260318_10154583226847256_8173622326874577384_n.jpg?oh=d6cfcd235840b1527d63a529d2d87723&oe=59DF7027">Linda</a>
+    <a data-image="https://scontent.fsst1-1.fna.fbcdn.net/v/t1.0-9/19260555_10154583226532256_6040476372025741147_n.jpg?oh=c873b749f2baa5724771eae731822a2f&oe=5A110470">Que</a>
+    <a data-image="https://scontent.fsst1-1.fna.fbcdn.net/v/t31.0-8/19468020_10154583226242256_3664030111843262077_o.jpg?oh=e49813978105cccf9bd493ce67419f7a&oe=59CC83D5">Sos</a>
 </div>
   `,
 })
