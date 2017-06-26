@@ -4,7 +4,6 @@ import { tweens, hitAreas } from 'ngvas';
 @Component({
   selector: 'ngvas-demo',
   template: `
-    <h1>Ngvas App Demo</h1>
     <ngvas [width]="500" [height]="500" (ready)="tweenComplete()">
       <ngvas-rectangle [fill]="fill" [translate]="xy" [size]="size" [rotate]="rotate" origin="center"></ngvas-rectangle>
       <ngvas-circle [stroke]="stroke" [translate]="xy" [radius]="50" origin="center"></ngvas-circle>
@@ -13,7 +12,7 @@ import { tweens, hitAreas } from 'ngvas';
       <ngvas-bezier [stroke]="{ width: 4 }" [x]="50" [y]="50" [curves]="[[ [100, 100], [150, 450], [400, 300], [400, 400] ]]"></ngvas-bezier>
       <ngvas-arc fill="#ff0000" [x]="250" [y]="250" [radius]="50" [angle]="[270, 1000]" origin="center" [connectToCenter]="true"></ngvas-arc>
       <ngvas-quadratic [stroke]="{ width: 4 }" [x]="50" [y]="50" [curves]="[[ [100, 100], [150, 450], [400, 400] ]]"></ngvas-quadratic>
-      <ngvas-text fill="#0000ff" [textStyle]="{ font: '48px Arial' }" [x]="50" [y]="250" text="This is text."></ngvas-text>
+      <ngvas-text fill="#0000ff" [textStyle]="{ font: '48px Arial' }" [x]="50" [y]="250" text="Texto Bardero."></ngvas-text>
       <!--<ngvas-image fill="rgba(0,0,0,0)" [width]="100" [height]="100" src="../test/bird.jpg" [x]="10" [y]="10" [translate]="[[400, 400], 2000]"></ngvas-image>-->
       <!--
       <ngvas-circle fill="#ff0000" [x]="250" [y]="250" [radius]="50" [translate]="[[50, 50], 1000]" origin="center"></ngvas-circle>
