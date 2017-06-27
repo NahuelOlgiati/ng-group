@@ -1,0 +1,17 @@
+
+
+
+var circularSlider = $('#slider').CircularSlider({ 
+    min : 0, 
+    max: 359, 
+    value : 10,
+    labelSuffix: "°",
+    slide : function(value) {
+        ui.next().css({'background' : 'linear-gradient(' + value + 
+            'deg, white, cornsilk, white)'});
+    }
+}); 
+                    
+
+<div id="slider-full"> 
+                <div class="jcs-panel noselect" style="border-width: 7.5px; border-radius: 157.5px;"><div class="jcs" style="width: 150px; height: 150px; border-radius: 150px;"><span class="jcs-value" style="width: 75px; height: 75px; font-size: 18.75px; top: 30.5px; left: 30.5px;">284°</span></div><div class="jcs-indicator" style="width: 15px; height: 15px; top: 47.5545px; left: -4.74392px;"> </div></div></div>
